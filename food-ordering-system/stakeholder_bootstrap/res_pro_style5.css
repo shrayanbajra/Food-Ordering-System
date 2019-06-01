@@ -1,0 +1,136 @@
+.body{
+	font-family: Helvetica;
+}
+
+.Background_wrapper{
+	/*Background*/
+	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../images/resourceImage/dummy_restaurant5.jpg);
+	background-size: cover;
+	height: 75vh;
+	background-position: center;
+	background-attachment: fixed;
+
+	/*Text*/
+	color: white;
+	font-weight: normal;
+}
+
+.logo_part{
+	margin-left: 100px;
+	margin-right: 35px;
+	float: left;
+	border-width: 2px;
+	border-style: solid;
+	border-color: silver;
+}
+
+.text_part{
+	font-size: 18px;
+	margin-top: -15px;
+}
+
+.main_nav{
+	background-color: 	#8b5a2b;
+	height: 42px;
+	font-size: 25px;
+	font-weight: normal;
+	font: Tahoma;
+}
+
+.main_nav ul{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	text-align: center;
+}
+
+.main_nav li{
+	display: inline;
+	padding: 15px;
+	vertical-align: middle;
+}
+
+.main_nav a{
+	text-decoration: none;
+	padding: 7px 8px 7px 8px;
+	color: white;
+	vertical-align: middle;
+}
+
+.main_nav a:hover{
+	color: #8b5a2b;;
+	background-color: white;
+}
+
+.main-nav1{
+	list-style: none;
+	float: left;
+	margin-top: 15px;
+}
+
+.main-nav1 li{
+	display: inline-block;
+	margin-left: 199px;
+}
+
+.main-nav1 li a{
+	color: black;
+	text-decoration: none;
+	font-size: 90%;
+	font-weight: bold;
+}
+
+.main-nav1 li a:hover{
+	color: #e67e22;
+	border-bottom: 2px solid #e67e22;
+	transition: all 0.5s ease-in;
+	padding: 18px 0;
+}
+/*.post_code{
+	display: block;
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 2rem;
+	padding: .6rem;
+	border: none;
+	outline: none;
+}
+*/
+
+.menu_section{
+	margin: 30px 0px 0px 0px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: silver;
+}
+
+.menu_section h2,h3{
+	text-align: center;
+}
+
+.menu_row{
+	float: left;
+	margin: 10px 53px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.menu_row ul{
+	list-style-type: none;
+}
+
+.menu_row li{
+	padding: 5px;
+}
+
+.menu_item table{
+
+}
+
+.lower_part{
+	background-image: url(../image/resourceImage/rest_back.jpg);
+	background-size: cover;
+	opacity: 0.75;
+	color: black;
+}

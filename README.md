@@ -2,4 +2,4 @@
 food.rar contains database(food.sql)
 
 Create a database named "food" 
-Then import he food.sql into it
+Then import the food.sql into it

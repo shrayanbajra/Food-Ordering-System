@@ -2,10 +2,9 @@
 include 'includes/connect.php';
 include 'includes/wallet.php';
 
-	if($_SESSION['customer_sid']==session_id())
-	{
-		$RestaurantName = $_SESSION['RestaurantName'];
-		?>
+if ($_SESSION['customer_sid'] == session_id()) {
+    $RestaurantName = $_SESSION['RestaurantName'];
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,7 +99,7 @@ include 'includes/wallet.php';
                       <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                     <ul class="right hide-on-med-and-down">
-                        <!--<li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo "Remaining Balance".$balance;?></i></a></li>-->
+                        <!--<li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo "Remaining Balance" . $balance; ?></i></a></li>-->
 												<li> <h4>  <?php echo $RestaurantName ?>  </h4> </li>
                     </ul>
                 </div>
@@ -132,8 +131,8 @@ include 'includes/wallet.php';
                     </ul>
                 </div>
                 <div class="col col s8 m8 l8">
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name;?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <p class="user-roal"><?php echo $role;?></p>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name; ?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <p class="user-roal"><?php echo $role; ?></p>
                 </div>
             </div>
             </li>
@@ -147,12 +146,12 @@ include 'includes/wallet.php';
 								<li><a href="orders.php">All Orders</a>
                                 </li>
 								<?php
-									$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders WHERE customer_id = $user_id;");
-									while($row = mysqli_fetch_array($sql)){
-                                    echo '<li><a href="orders.php?status='.$row['status'].'">'.$row['status'].'</a>
+$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders WHERE customer_id = $user_id;");
+    while ($row = mysqli_fetch_array($sql)) {
+        echo '<li><a href="orders.php?status=' . $row['status'] . '">' . $row['status'] . '</a>
                                     </li>';
-									}
-									?>
+    }
+    ?>
                                 </ul>
                             </div>
                         </li>
@@ -164,21 +163,21 @@ include 'includes/wallet.php';
                             <div class="collapsible-body">
                                 <ul>
 								<li class="<?php
-								if(!isset($_GET['status'])){
-										echo 'active';
-									}?>
+if (!isset($_GET['status'])) {
+        echo 'active';
+    }?>
 									"><a href="tickets.php">All Reservations</a>
                                 </li>
 								<?php
-									$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets WHERE poster_id = $user_id AND not deleted;");
-									while($row = mysqli_fetch_array($sql)){
-									if(isset($_GET['status'])){
-										$status = $row['status'];
-									}
-                                    echo '<li class='.(isset($_GET['status'])?($status == $_GET['status'] ? 'active' : ''): '').'><a href="tickets.php?status='.$row['status'].'">'.$row['status'].'</a>
+$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets WHERE poster_id = $user_id AND not deleted;");
+    while ($row = mysqli_fetch_array($sql)) {
+        if (isset($_GET['status'])) {
+            $status = $row['status'];
+        }
+        echo '<li class=' . (isset($_GET['status']) ? ($status == $_GET['status'] ? 'active' : '') : '') . '><a href="tickets.php?status=' . $row['status'] . '">' . $row['status'] . '</a>
                                     </li>';
-									}
-									?>
+    }
+    ?>
                                 </ul>
                             </div>
                         </li>
@@ -250,7 +249,7 @@ include 'includes/wallet.php';
                       <div class="row">
                         <div class="row">
                           <div class="input-field col s12">
-						  <input type="hidden" value="<?php echo $user_id;?>" name="id">
+						  <input type="hidden" value="<?php echo $user_id; ?>" name="id">
                             <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
                               <i class="mdi-content-send right"></i>
                             </button>
@@ -278,29 +277,28 @@ include 'includes/wallet.php';
 									<div id="work-collections">
 									<ul id="projects-collection" class="collection">
 								<?php
-									if(isset($_GET['status'])){
-										$status = $_GET['status'];
-									}
-									else{
-										$status = '%';
-									}
-									$sql = mysqli_query($con, "SELECT * FROM tickets WHERE poster_id = $user_id AND status LIKE '$status' AND not deleted;");
-									while($row = mysqli_fetch_array($sql)){
-									echo'<a href="view-ticket.php?id='.$row['id'].'"class="collection-item">
+if (isset($_GET['status'])) {
+        $status = $_GET['status'];
+    } else {
+        $status = '%';
+    }
+    $sql = mysqli_query($con, "SELECT * FROM tickets WHERE poster_id = $user_id AND status LIKE '$status' AND not deleted;");
+    while ($row = mysqli_fetch_array($sql)) {
+        echo '<a href="view-ticket.php?id=' . $row['id'] . '"class="collection-item">
                                         <div class="row">
                                             <div class="col s6">
-                                                <p class="collections-title">'.$row['subject'].'</p>
+                                                <p class="collections-title">' . $row['subject'] . '</p>
                                             </div>
                                             <div class="col s2">
-                                            <span class="task-cat cyan">'.$row['status'].'</span></div>
+                                            <span class="task-cat cyan">' . $row['status'] . '</span></div>
                                             <div class="col s2">
-                                            <span class="task-cat grey darken-3">'.$row['type'].'</span></div>
+                                            <span class="task-cat grey darken-3">' . $row['type'] . '</span></div>
                                             <div class="col s2">
-                                            <span class="badge">'.$row['date'].'</span></div>
+                                            <span class="badge">' . $row['date'] . '</span></div>
                                         </div>
                                     </a>';
-									}
-									?>
+    }
+    ?>
 									</ul>
 									</div>
             <div class="divider"></div>
@@ -398,15 +396,11 @@ include 'includes/wallet.php';
 
 </html>
 <?php
-	}
-	else
-	{
-		if($_SESSION['admin_sid']==session_id())
-		{
-			header("location:all-tickets.php");
-		}
-		else{
-			header("location:login.php");
-		}
-	}
+} else {
+    if ($_SESSION['admin_sid'] == session_id()) {
+        header("location:all-tickets.php");
+    } else {
+        header("location:login.php");
+    }
+}
 ?>

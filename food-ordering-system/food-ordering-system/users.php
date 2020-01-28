@@ -1,10 +1,10 @@
 <?php
-include 'includes/connect.php';
 
+  include 'includes/connect.php';
 
-	if($_SESSION['admin_sid']==session_id())
-	{
-		?>
+    if($_SESSION['admin_sid']==session_id())
+    {
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -194,7 +194,6 @@ include 'includes/connect.php';
         </div>
         <!--breadcrumbs end-->
 
-
         <!--start container-->
         <div class="container">
           <p class="caption">Enable, Disable or Verify Users.</p>
@@ -223,9 +222,9 @@ include 'includes/connect.php';
 
                     <tbody>
 				<?php
-				$result = mysqli_query($con, "SELECT * FROM users");
-				while($row = mysqli_fetch_array($result))
-				{
+				  $result = mysqli_query($con, "SELECT * FROM users");
+				  while($row = mysqli_fetch_array($result))
+				{ 
 					echo '<tr><td>'.$row["name"].'</td>';
 					echo '<td>'.$row["email"].'</td>';
 					echo '<td>'.$row["contact"].'</td>';

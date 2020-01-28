@@ -1,10 +1,8 @@
 <?php
 include 'includes/connect.php';
 
-
-	if($_SESSION['admin_sid']==session_id())
-	{
-		?>
+if ($_SESSION['admin_sid'] == session_id()) {
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,7 +95,14 @@ include 'includes/connect.php';
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li>
+                        <h1 class="logo-wrapper">
+                          <a href="index.php" class="brand-logo darken-1">
+                            <img src="images/materialize-logo.png" alt="logo">
+                          </a>
+                          <span class="logo-text">Logo</span>
+                        </h1>
+                      </li>
                     </ul>
                 </div>
             </nav>
@@ -128,8 +133,8 @@ include 'includes/connect.php';
                     </ul>
                 </div>
                 <div class="col col s8 m8 l8">
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name;?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <p class="user-roal"><?php echo $role;?></p>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name; ?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <p class="user-roal"><?php echo $role; ?></p>
                 </div>
             </div>
             </li>
@@ -143,12 +148,12 @@ include 'includes/connect.php';
 								<li><a href="all-orders.php">All Orders</a>
                                 </li>
 								<?php
-									$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders;");
-									while($row = mysqli_fetch_array($sql)){
-                                    echo '<li><a href="all-orders.php?status='.$row['status'].'">'.$row['status'].'</a>
+$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders;");
+    while ($row = mysqli_fetch_array($sql)) {
+        echo '<li><a href="all-orders.php?status=' . $row['status'] . '">' . $row['status'] . '</a>
                                     </li>';
-									}
-									?>
+    }
+    ?>
                                 </ul>
                             </div>
                         </li>
@@ -162,12 +167,12 @@ include 'includes/connect.php';
 								<li><a href="all-tickets.php">All Reservations</a>
                                 </li>
 								<?php
-									$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets;");
-									while($row = mysqli_fetch_array($sql)){
-                                    echo '<li><a href="all-tickets.php?status='.$row['status'].'">'.$row['status'].'</a>
+$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets;");
+    while ($row = mysqli_fetch_array($sql)) {
+        echo '<li><a href="all-tickets.php?status=' . $row['status'] . '">' . $row['status'] . '</a>
                                     </li>';
-									}
-									?>
+    }
+    ?>
                                 </ul>
                             </div>
                         </li>
@@ -220,30 +225,28 @@ include 'includes/connect.php';
 
                     <tbody>
 				<?php
-				$result = mysqli_query($con, "SELECT * FROM items");
-				while($row = mysqli_fetch_array($result))
-				{
-					echo '<tr><td><div class="input-field col s12"><label for="'.$row["id"].'_name">Name</label>';
-					echo '<input value="'.$row["name"].'" id="'.$row["id"].'_name" name="'.$row['id'].'_name" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';
-					echo '<td><div class="input-field col s12 "><label for="'.$row["id"].'_price">Price</label>';
-					echo '<input value="'.$row["price"].'" id="'.$row["id"].'_price" name="'.$row['id'].'_price" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';
-					echo '<td><div class="input-field col s12"><label for="'.$row["id"].'_RestaurantName">Restaurant Name</label>';
-					echo '<input value="'.$row["RestaurantName"].'" id="'.$row["id"].'_RestaurantName" name="'.$row['id'].'_RestaurantName" type="text" "><div></div></td>';
-					echo '<td>';
-					if($row['deleted'] == 0){
-						$text1 = 'selected';
-						$text2 = '';
-					}
-					else{
-						$text1 = '';
-						$text2 = 'selected';
-					}
-					echo '<select name="'.$row['id'].'_hide">
-                      <option value="1"'.$text1.'>Available</option>
-                      <option value="2"'.$text2.'>Not Available</option>
+$result = mysqli_query($con, "SELECT * FROM items");
+    while ($row = mysqli_fetch_array($result)) {
+        echo '<tr><td><div class="input-field col s12"><label for="' . $row["id"] . '_name">Name</label>';
+        echo '<input value="' . $row["name"] . '" id="' . $row["id"] . '_name" name="' . $row['id'] . '_name" type="text" data-error=".errorTxt' . $row["id"] . '"><div class="errorTxt' . $row["id"] . '"></div></td>';
+        echo '<td><div class="input-field col s12 "><label for="' . $row["id"] . '_price">Price</label>';
+        echo '<input value="' . $row["price"] . '" id="' . $row["id"] . '_price" name="' . $row['id'] . '_price" type="text" data-error=".errorTxt' . $row["id"] . '"><div class="errorTxt' . $row["id"] . '"></div></td>';
+        echo '<td><div class="input-field col s12"><label for="' . $row["id"] . '_RestaurantName">Restaurant Name</label>';
+        echo '<input value="' . $row["RestaurantName"] . '" id="' . $row["id"] . '_RestaurantName" name="' . $row['id'] . '_RestaurantName" type="text" "><div></div></td>';
+        echo '<td>';
+        if ($row['deleted'] == 0) {
+            $text1 = 'selected';
+            $text2 = '';
+        } else {
+            $text1 = '';
+            $text2 = 'selected';
+        }
+        echo '<select name="' . $row['id'] . '_hide">
+                      <option value="1"' . $text1 . '>Available</option>
+                      <option value="2"' . $text2 . '>Not Available</option>
                     </select></td></tr>';
-				}
-				?>
+    }
+    ?>
                     </tbody>
 </table>
               </div>
@@ -271,13 +274,13 @@ include 'includes/connect.php';
 
                     <tbody>
 				<?php
-					echo '<tr><td><div class="input-field col s12"><label for="name">Name</label>';
-					echo '<input id="name" name="name" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';
-					echo '<td><div class="input-field col s12 "><label for="price" class="">Price</label>';
-					echo '<input id="price" name="price" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';
-					echo '<td><div class="input-field col s12"><label for="RestaurantName">Restaurant Name</label>';
-					echo '<input id="RestaurantName" name="RestaurantName" type="text" ><div ></div></td></tr>';
-				?>
+echo '<tr><td><div class="input-field col s12"><label for="name">Name</label>';
+    echo '<input id="name" name="name" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';
+    echo '<td><div class="input-field col s12 "><label for="price" class="">Price</label>';
+    echo '<input id="price" name="price" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';
+    echo '<td><div class="input-field col s12"><label for="RestaurantName">Restaurant Name</label>';
+    echo '<input id="RestaurantName" name="RestaurantName" type="text" ><div ></div></td></tr>';
+    ?>
                     </tbody>
 </table>
               </div>
@@ -347,38 +350,36 @@ include 'includes/connect.php';
     $("#formValidate").validate({
         rules: {
 			<?php
-			$result = mysqli_query($con, "SELECT * FROM items");
-			while($row = mysqli_fetch_array($result))
-			{
-				echo $row["id"].'_name:{
+$result = mysqli_query($con, "SELECT * FROM items");
+    while ($row = mysqli_fetch_array($result)) {
+        echo $row["id"] . '_name:{
 				required: true,
 				minlength: 5,
 				maxlength: 20
 				},';
-				echo $row["id"].'_price:{
+        echo $row["id"] . '_price:{
 				required: true,
 				min: 0
 				},';
-			}
-		echo '},';
-		?>
+    }
+    echo '},';
+    ?>
         messages: {
 			<?php
-			$result = mysqli_query($con, "SELECT * FROM items");
-			while($row = mysqli_fetch_array($result))
-			{
-				echo $row["id"].'_name:{
+$result = mysqli_query($con, "SELECT * FROM items");
+    while ($row = mysqli_fetch_array($result)) {
+        echo $row["id"] . '_name:{
 				required: "Ener item name",
 				minlength: "Minimum length is 5 characters",
 				maxlength: "Maximum length is 20 characters"
 				},';
-				echo $row["id"].'_price:{
+        echo $row["id"] . '_price:{
 				required: "Ener price of item",
 				min: "Minimum item price is Rs. 0"
 				},';
-			}
-		echo '},';
-		?>
+    }
+    echo '},';
+    ?>
         errorElement : 'div',
         errorPlacement: function(error, element) {
           var placement = $(element).data('error');
@@ -427,19 +428,13 @@ include 'includes/connect.php';
 
 </html>
 <?php
-	}
-	else
-	{
-		if($_SESSION['customer_sid']==session_id())
-		{
-			header("location:index.php");
-		}
-    elseif($_SESSION['resowner_sid']==session_id())
-    {
-      header("location:resowner.php");
+} else {
+    if ($_SESSION['customer_sid'] == session_id()) {
+        header("location:index.php");
+    } elseif ($_SESSION['resowner_sid'] == session_id()) {
+        header("location:resowner.php");
+    } else {
+        header("location:login.php");
     }
-		else{
-			header("location:login.php");
-		}
-	}
+}
 ?>

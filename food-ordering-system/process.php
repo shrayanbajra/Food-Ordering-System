@@ -19,11 +19,19 @@
 	$result = mysql_query("select * from stake_reg where name = '$name' and resName = '$rname'and email = '$email'and mobile='$mobile' ")
 		or die("Failed to query database".mysql_error());
 	$rows = mysql_fetch_array($result);
-	if($rows!=0)
-		echo ("sucessfully regitered");
-	else
-	{
-		echo("Failed to register");
+
+	if($rows == 0){
+		displayError("Failed to register");
 		exit();
+	}else{
+		displaySuccess("Sucessfully Registered");
 	}
- ?>
+
+	function displaySuccess(string $success_message){
+		echo($success_message);
+	}
+
+	function displayError(string $error_message){
+		echo($error_message);
+	}
+?>

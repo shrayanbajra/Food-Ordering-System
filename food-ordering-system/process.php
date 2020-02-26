@@ -1,17 +1,15 @@
 <?php 
-	//Get values passed from form in login.php file
+	// Get values passed from form in login.php file
 	$name = $_POST['name'];
 	$rname = $_POST['resName'];
 	$email = $_POST['email'];
 	$mobile = $_POST['mobile'];
  
-	//to prevent mysql injection
+	// To prevent MySQL injection
 	$name = stripcslashes($name);
 	$rname = stripcslashes($rname);
 	$email = stripcslashes($email);
 	$mobile = stripcslashes($mobile);
-/*	$username = mysql_real_escape_string($username);
-	$password = mysql_real_escape_string($password);  */
 
 	// connect to the server and select database
 	mysql_connect("localhost","root","");

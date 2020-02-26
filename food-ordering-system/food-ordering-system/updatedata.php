@@ -30,18 +30,12 @@ $qry = "UPDATE `student`
 $run = mysqli_query($con, $qry);
 
 if ($run == true) {
-    ?>
-    <script>
-      
-      alert('Data Upadated Successfully');
-      
-      window.open(
-        'updateform.php?sid=<?php echo $id; ?>',
-        '_self'
-        );
-
-    </script>
-    <?php
+?>
+  <script>
+    alert('Data Updated Successfully');
+    window.open('updateform.php?sid=<?php echo $id; ?>','_self');
+  </script>
+<?php
 }
 
 ?>
